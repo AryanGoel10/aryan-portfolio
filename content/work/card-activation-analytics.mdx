@@ -22,13 +22,34 @@ order: 3
 description: Segmenting a 5.2M-cardholder credit portfolio and building propensity tiers with SQL and PySpark to find ~₹500 Cr in incremental value.
 ---
 
-{/* Full write-up is written in Phase 3. Facts to expand, from SPEC.md section 6.4: */}
+## Context
 
-**Facts to expand (Phase 3):**
+On the same Mastercard Advisors engagement for India's #1 card issuer, I worked on card activation. The question was simple: which cardholders should the bank try to activate, and is it worth the money?
 
-- Segmented the credit portfolio by activity state and card tier into 7 segments; proposed a focused activation set of 5.
-- Rebuilt the ROI model (revolve + interchange) into a Go/No-Go framework.
-- Propensity tiers for 2.6M ATM-only debit cardholders (High ~280K, Medium ~2.25M), projecting +12.59% activation vs −0.72% forecast and 140K new activations.
-- Merchant-level offer economics.
-- SQL and PySpark on Hadoop/Impala.
-- Client stays anonymous ("India's #1 card issuer"); no logos or screenshots.
+## The problem
+
+The credit portfolio had 5.2M cardholders, and there were 2.6M debit cardholders who only used their cards at ATMs. Activation campaigns cost money, so the bank needed to know which segments would pay back.
+
+## What I did
+
+1. **Segmented the credit portfolio** by activity state and card tier into 7 segments.
+2. **Proposed a focused activation set** of 5 of those segments.
+3. **Rebuilt the ROI model** on revolve and interchange revenue, and turned it into a Go/No-Go framework the client can use segment by segment.
+4. **Built propensity tiers** for the 2.6M ATM-only debit cardholders: a High tier of ~280K and a Medium tier of ~2.25M.
+5. **Modelled merchant-level offer economics**, so offers are judged on what they return.
+
+All of it ran on SQL and PySpark over Hadoop/Impala.
+
+<Callout title="Impact">
+- **~₹500 Cr incremental present value** from the Go/No-Go framework
+- **+12.59% projected activation uplift** for debit, versus a −0.72% forecast
+- **140K projected new activations**
+</Callout>
+
+## Tools
+
+<Tools items={["SQL", "PySpark", "Hadoop", "Impala", "Customer Segmentation", "ROI Modelling"]} />
+
+## What I'd do next
+
+Run the activation set as a controlled test, so the projected uplift becomes a measured one.

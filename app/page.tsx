@@ -1,81 +1,94 @@
-import Link from "next/link";
 import { site } from "@/content/site";
-import { experience } from "@/content/experience";
-import { leadership } from "@/content/leadership";
-import { getAllCases } from "@/lib/mdx";
-import { formatDate, formatMetric } from "@/lib/utils";
-import { PlaceholderPage } from "@/components/layout/placeholder-page";
+import { Hero } from "@/components/home/hero";
+import { ImpactStrip } from "@/components/home/impact-strip";
+import { FeaturedWork } from "@/components/home/featured-work";
+import { Timeline } from "@/components/home/timeline";
+import { Leadership } from "@/components/home/leadership";
+import { NowCard } from "@/components/home/now-card";
+import { ContactCTA } from "@/components/home/contact-cta";
+import { SectionHeading } from "@/components/ui/primitives";
+import { Reveal } from "@/components/layout/reveal";
+import { JsonLd } from "@/components/json-ld";
 
-/**
- * Phase 0 content check: renders everything in /content so it can be reviewed.
- * Replaced by the real Home page in Phase 2.
- */
 export default function Home() {
-  const cases = getAllCases();
-  const { headline } = site.hero;
-
   return (
-    <PlaceholderPage title={`${headline.before}${headline.accent}${headline.after}`} phase="Phase 2">
-      <section className="space-y-2">
-        <p className="font-mono text-xs tracking-[0.08em] text-subtle uppercase">{site.hero.eyebrow}</p>
-        <p className="text-lg">
-          {site.name} — {site.positioning}
-        </p>
-        <p className="text-muted">{site.availability.long}</p>
-        <p className="max-w-[68ch] text-muted">{site.hero.bio}</p>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: site.name,
+          jobTitle: site.role,
+          description: site.positioning,
+          url: site.url,
+          image: `${site.url}/aryan.jpg`,
+          email: `mailto:${site.email}`,
+          address: { "@type": "PostalAddress", addressLocality: "New Delhi", addressCountry: "IN" },
+          alumniOf: { "@type": "CollegeOrUniversity", name: "Netaji Subhas University of Technology" },
+          sameAs: [site.links.linkedin, site.links.github],
+        }}
+      />
+
+      <Hero />
+
+      <section id="impact" aria-label="Impact" className="scroll-mt-20 pb-16 lg:pb-24">
+        <ImpactStrip />
       </section>
 
-      <h2 className="mt-12 text-2xl font-semibold">Impact strip</h2>
-      <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {site.metrics.map((m) => (
-          <li key={m.label} className="rounded-card border border-line bg-surface-2 p-4">
-            <p className="font-mono text-3xl tabular-nums">{formatMetric(m)}</p>
-            <p className="mt-2 text-[13px] text-muted">{m.label}</p>
-            <p className="mt-1 text-xs text-subtle">Source: {m.source}</p>
-          </li>
-        ))}
-      </ul>
+      <section
+        id="featured-work"
+        aria-labelledby="featured-title"
+        className="scroll-mt-14 border-t border-line section-y"
+      >
+        <Reveal>
+          <SectionHeading
+            id="featured-title"
+            eyebrow="Selected work"
+            title="Case studies with real numbers"
+          />
+        </Reveal>
+        <FeaturedWork />
+      </section>
 
-      <h2 className="mt-12 text-2xl font-semibold">Case studies ({cases.length})</h2>
-      <ul className="mt-4 space-y-3">
-        {cases.map((c) => (
-          <li key={c.slug} className="rounded-card border border-line bg-surface p-4">
-            <p className="font-mono text-xs tracking-[0.08em] text-subtle uppercase">
-              {c.company} · {c.year} · {c.category}
-              {c.featured ? " · featured" : ""}
-            </p>
-            <Link href={`/work/${c.slug}`} className="mt-1 block font-semibold hover:text-accent">
-              {c.title}
-            </Link>
-            <p className="text-sm text-muted">{c.outcome}</p>
-            <p className="mt-2 font-mono text-xs text-subtle uppercase">{c.tags.join(" · ")}</p>
-          </li>
-        ))}
-      </ul>
+      <section
+        id="experience"
+        aria-labelledby="experience-title"
+        className="scroll-mt-14 border-t border-line section-y"
+      >
+        <Reveal>
+          <SectionHeading id="experience-title" eyebrow="Experience" title="Where I've shipped growth" />
+        </Reveal>
+        <Reveal>
+          <Timeline />
+        </Reveal>
+      </section>
 
-      <h2 className="mt-12 text-2xl font-semibold">Experience</h2>
-      <ul className="mt-4 space-y-2">
-        {experience.map((e) => (
-          <li key={`${e.org}-${e.dates}`} className="text-sm">
-            <span className="font-mono text-subtle">{e.dates}</span> — {e.role}, {e.org}:{" "}
-            <span className="text-muted">{e.line}</span>
-          </li>
-        ))}
-      </ul>
+      <section
+        id="leadership"
+        aria-labelledby="leadership-title"
+        className="scroll-mt-14 border-t border-line section-y"
+      >
+        <Reveal>
+          <SectionHeading id="leadership-title" eyebrow="Leadership" title="Teams I lead" />
+        </Reveal>
+        <Leadership />
+      </section>
 
-      <h2 className="mt-12 text-2xl font-semibold">Leadership</h2>
-      <ul className="mt-4 space-y-2">
-        {leadership.map((l) => (
-          <li key={l.org} className="text-sm">
-            {l.title}, {l.org} ({l.tenure}): <span className="text-muted">{l.description}</span>
-          </li>
-        ))}
-      </ul>
+      <section id="now" aria-labelledby="now-title" className="scroll-mt-14 pb-16 lg:pb-24">
+        <Reveal>
+          <NowCard />
+        </Reveal>
+      </section>
 
-      <h2 className="mt-12 text-2xl font-semibold">Now</h2>
-      <p className="mt-2 text-sm text-muted">
-        {site.now.text} <span className="text-subtle">(updated {formatDate(site.now.updated)})</span>
-      </p>
-    </PlaceholderPage>
+      <section
+        id="contact"
+        aria-labelledby="contact-title"
+        className="scroll-mt-14 border-t border-line section-y"
+      >
+        <Reveal>
+          <ContactCTA />
+        </Reveal>
+      </section>
+    </>
   );
 }

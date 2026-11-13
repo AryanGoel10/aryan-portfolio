@@ -37,6 +37,22 @@ export function getCase(slug: string): CaseStudy | undefined {
   return getAllCases().find((c) => c.slug === slug);
 }
 
+/** Previous and next case study (by order), wrapping around. */
+export function getNeighbours(slug: string) {
+  const all = getAllCases();
+  const i = all.findIndex((c) => c.slug === slug);
+  return { prev: all[(i - 1 + all.length) % all.length], next: all[(i + 1) % all.length] };
+}
+
+/** Reading time in minutes at ~220 words per minute (minimum 1). */
+export function readingTime(body: string) {
+  const words = body
+    .replace(/<[^>]+>|\{\/\*[\s\S]*?\*\/\}/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 220));
+}
+
 export function getFeaturedCases(): CaseStudy[] {
   return getAllCases().filter((c) => c.featured);
 }

@@ -1,12 +1,12 @@
 /**
  * Site-wide content: identity, links, availability, nav, hero, metrics and page copy.
  *
- * Edit freely. The build checks this file against content/schema.ts and will
- * tell you exactly which field is wrong if something breaks.
+ * Edit freely. The build checks this file against content/schema.ts (see content/validate.ts)
+ * and will tell you exactly which field is wrong if something breaks.
  */
-import { siteSchema } from "./schema";
+import type { Site } from "./schema";
 
-export const site = siteSchema.parse({
+export const site: Site = {
   name: "Aryan Goel",
   role: "GTM & Growth Engineer",
   positioning: "GTM & Growth Engineer who turns data and automation into users, pipeline and revenue.",
@@ -152,4 +152,4 @@ export const site = siteSchema.parse({
       body: "Let's win you back:",
     },
   },
-});
+};

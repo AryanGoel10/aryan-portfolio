@@ -20,12 +20,34 @@ order: 2
 description: A parameter-driven Python and VBScript pipeline that cut quarterly business review production from 120 to 5 minutes per file at Mastercard Advisors.
 ---
 
-{/* Full write-up is written in Phase 3. Facts to expand, from SPEC.md section 6.4: */}
+## Context
 
-**Facts to expand (Phase 3):**
+At Mastercard Advisors I was an Associate Consultant Intern in Performance Analytics, working for India's #1 card issuer. Every quarter the team produces quarterly business reviews (QBRs) for the client. The client stays anonymous here, and there are no screenshots, by design.
 
-- Manual quarterly business review production took 20+ hours of pivot work per quarter.
-- Built a parameter-driven Python + VBScript pipeline with modular SME and market metrics.
-- Zero-error, auditable, deterministic output; adopted as the team's standard workflow.
-- Designed to scale to other bank clients.
-- Client stays anonymous ("India's #1 card issuer"); no logos or screenshots.
+## The problem
+
+QBR production was manual: 20+ hours of pivot work every quarter, about 120 minutes per file across 10 file types. Manual work also means room for error in numbers a client relies on.
+
+## What I did
+
+1. **Built a parameter-driven pipeline** in Python and VBScript. Set the parameters, run it, get the finished file.
+2. **Made the metrics modular.** SME and market metrics are separate building blocks, so adding a metric doesn't mean rewriting the pipeline.
+3. **Made the output deterministic and auditable.** The same inputs always produce the same file, and every number can be traced.
+4. **Designed it to scale** to the team's other bank clients, not just this one.
+
+<Callout title="Impact">
+- **120 → 5 minutes per file, 95% faster**, across 10 file types
+- **20–25 analyst-hours saved per quarter**
+- **Zero errors**, with output that can be audited
+- **Adopted as the team's standard workflow**
+</Callout>
+
+I left the internship with a full-time offer, joining in May 2027.
+
+## Tools
+
+<Tools items={["Python", "VBScript", "Microsoft Excel"]} />
+
+## What I'd do next
+
+Roll the pipeline out to other bank clients, which is what it was designed for, and add automatic checks that flag unusual quarter-on-quarter movements before a human reviews the file.

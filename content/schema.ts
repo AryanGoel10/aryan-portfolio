@@ -27,14 +27,14 @@ export const metricSchema = z.object({
   /** The number the count-up animates to. */
   value: z.number().nonnegative(),
   /** Text before the number, e.g. "+". */
-  prefix: z.string().default(""),
+  prefix: z.string().optional(),
   /** Text after the number, e.g. "K+" or "%". */
-  suffix: z.string().default(""),
+  suffix: z.string().optional(),
   label: z.string().min(1),
   /** Shown on hover / focus / tap. Every number needs a source. */
   source: z.string().min(1),
-  /** Shows a green up arrow next to the number. */
-  trend: z.enum(["up", "none"]).default("up"),
+  /** Green up arrow next to the label. Defaults to "up". */
+  trend: z.enum(["up", "none"]).optional(),
 });
 
 export const resumeSchema = z.object({

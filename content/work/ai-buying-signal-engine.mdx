@@ -19,7 +19,7 @@ workflow:
     tools: [Apify]
   - step: Enrich and qualify accounts
     tools: [Clay, Apollo]
-  - step: Review in Slack
+  - step: Route qualified accounts to Slack
     tools: [Slack]
   - step: Generate personalised messages
     tools: [OpenAI/Claude APIs]
@@ -30,13 +30,37 @@ order: 4
 description: "An AI outbound engine built with Apify, Clay, Apollo, Instantly and HeyReach: 3,000+ accounts scanned for buying signals, 20 meetings booked."
 ---
 
-{/* Full write-up is written in Phase 3. Facts to expand: */}
+## Context
 
-**Facts to expand (Phase 3):**
+Nextvant sells GTM services. I rejoined in August 2026 in an expanded founder's office role, and part of that is building the engine that finds Nextvant's own next clients.
 
-- Built AI agents that detect buying signals for Nextvant's GTM services.
-- Pipeline: Apify scrapes signals → Clay enriches and qualifies (Apollo for contact enrichment) → accounts land in Slack → AI generates personalised messages → sent via Instantly (email) and HeyReach (LinkedIn).
-- Resume also lists n8n, Make and HubSpot as part of the stack.
-- Results: 3,000+ accounts scanned; 20 meetings booked so far (Nov 2026).
-- Workflow diagram is generated from the `workflow` field above (Phase 3).
-- TODO(Aryan): one non-confidential screenshot of the workflow (optional, diagram covers it).
+## The problem
+
+Finding the right accounts by hand doesn't scale, and generic outreach gets ignored. I wanted a system that spots buying signals, qualifies the account and reaches out with a message that's actually about them.
+
+## What I did
+
+I built a pipeline of AI agents. Each step hands off to the next:
+
+<Workflow />
+
+1. **Scrape signals.** Apify collects buying signals from the web.
+2. **Enrich and qualify.** Clay enriches each account and scores it; Apollo fills in contact details.
+3. **Route to Slack.** Qualified accounts land in Slack.
+4. **Write the message.** OpenAI/Claude APIs generate a personalised message for each account.
+5. **Send.** Instantly handles email and HeyReach handles LinkedIn.
+
+This is one of several workflows. I also build automations in n8n and Make, and intent-data workflows in HubSpot.
+
+<Callout title="Impact">
+- **3,000+ accounts scanned** for buying signals
+- **20 meetings booked so far** (November 2026)
+</Callout>
+
+## Tools
+
+<Tools items={["Apify", "Clay", "Apollo", "Slack", "OpenAI/Claude APIs", "Instantly", "HeyReach", "n8n", "Make", "HubSpot"]} />
+
+## What I'd do next
+
+Track which signals actually lead to meetings and weight the scoring towards them, so the engine gets sharper with every send.

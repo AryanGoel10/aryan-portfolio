@@ -1,24 +1,35 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { site } from "@/content/site";
 import { getAllCases } from "@/lib/mdx";
-import { PlaceholderPage } from "@/components/layout/placeholder-page";
+import { CaseCard } from "@/components/work/case-card";
+import { WorkGrid } from "@/components/work/work-grid";
 
-export const metadata: Metadata = { title: site.pages.work.title, description: site.pages.work.description };
+export const metadata: Metadata = {
+  title: site.pages.work.title,
+  description: site.pages.work.description,
+  alternates: { canonical: "/work" },
+  openGraph: {
+    url: "/work",
+    title: `${site.pages.work.title} · ${site.name}`,
+    description: site.pages.work.description,
+  },
+};
 
 export default function WorkPage() {
+  const cases = getAllCases();
   return (
-    <PlaceholderPage title={site.pages.work.title} phase="Phase 3">
-      <p className="text-muted">{site.pages.work.intro}</p>
-      <ul className="mt-6 list-disc space-y-1 pl-5">
-        {getAllCases().map((c) => (
-          <li key={c.slug}>
-            <Link href={`/work/${c.slug}`} className="hover:text-accent">
-              {c.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </PlaceholderPage>
+    <div className="pt-10 pb-16 sm:pt-14 lg:pt-20 lg:pb-24">
+      <h1 className="text-display text-fg">{site.pages.work.title}</h1>
+      <p className="mt-4 max-w-[60ch] text-lg text-muted">{site.pages.work.intro}</p>
+      <div className="mt-10">
+        <WorkGrid
+          items={cases.map((c) => ({
+            slug: c.slug,
+            category: c.category,
+            card: <CaseCard study={c} headingLevel="h2" />,
+          }))}
+        />
+      </div>
+    </div>
   );
 }

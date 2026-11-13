@@ -1,47 +1,38 @@
-import { ArrowUpRight, CalendarDays, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/content/site";
-import { buttonVariants } from "@/components/ui/button";
 import { TrackedLink } from "./tracked-link";
 
-/** Footer on every page: CTA + small print. */
+/** Slim footer on every page. Each page ends with its own contact block, so no CTA here. */
 export function Footer() {
+  const link = "inline-flex min-h-11 min-w-11 items-center justify-center hover:text-fg sm:min-h-0 sm:min-w-0";
   return (
-    <footer className="border-t border-line">
-      <div className="py-12">
-        <p className="text-h2 text-fg">{site.footer.tagline}</p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <TrackedLink
-            href={`mailto:${site.email}`}
-            className={buttonVariants({ variant: "primary" })}
-            tracking={{ event: "contact_click", channel: "email" }}
-          >
-            Email me <Mail aria-hidden strokeWidth={1.5} />
-          </TrackedLink>
-          {site.links.booking && (
-            <TrackedLink
-              href={site.links.booking}
-              target="_blank"
-              rel="noopener"
-              className={buttonVariants({ variant: "secondary" })}
-              tracking={{ event: "contact_click", channel: "booking" }}
-            >
-              Book a call <CalendarDays aria-hidden strokeWidth={1.5} />
-            </TrackedLink>
-          )}
-        </div>
-      </div>
-      <p className="border-t border-line py-6 text-meta text-subtle">
-        {site.footer.smallPrint} ·{" "}
-        <a
-          href={site.links.sourceRepo}
+    <footer className="mt-8 flex flex-col gap-3 border-t border-line py-6 text-meta text-subtle sm:flex-row sm:items-center sm:justify-between">
+      <p>{site.footer.smallPrint}</p>
+      <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-2">
+        <TrackedLink
+          href={`mailto:${site.email}`}
+          className={link}
+          tracking={{ event: "contact_click", channel: "email" }}
+        >
+          Email
+        </TrackedLink>
+        <TrackedLink
+          href={site.links.linkedin}
           target="_blank"
           rel="noopener"
-          className="inline-flex items-center gap-0.5 hover:text-fg"
+          className={link}
+          tracking={{ event: "contact_click", channel: "linkedin" }}
         >
-          Source on GitHub
+          LinkedIn
+        </TrackedLink>
+        <a href={site.links.github} target="_blank" rel="noopener" className={link}>
+          GitHub
+        </a>
+        <a href={site.links.sourceRepo} target="_blank" rel="noopener" className={`${link} gap-0.5`}>
+          Source
           <ArrowUpRight size={12} strokeWidth={1.5} aria-hidden />
         </a>
-      </p>
+      </nav>
     </footer>
   );
 }

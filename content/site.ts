@@ -9,7 +9,8 @@ import type { Site } from "./schema";
 export const site: Site = {
   name: "Aryan Goel",
   role: "GTM & Growth Engineer",
-  positioning: "GTM & Growth Engineer who turns data and automation into users, pipeline and revenue.",
+  positioning:
+    "GTM & growth engineer at Nextvant and TensorTonic. I turn data and automation into users, pipeline and revenue.",
 
   // Live address. Change to your own domain (e.g. https://aryangoel.in) once you buy one.
   url: "https://aryan-goel.vercel.app",
@@ -20,8 +21,8 @@ export const site: Site = {
 
   availability: {
     open: true,
-    badge: "Open to internships · Jan 2027",
-    long: "Open to 6-month internships from Jan 2027",
+    badge: "Open to GTM & growth roles · Jan 2027",
+    long: "Open to GTM & growth roles from Jan 2027",
   },
 
   links: {
@@ -68,75 +69,128 @@ export const site: Site = {
     homeTitle: "Aryan Goel — GTM & Growth Engineer",
     titleTemplate: "%s · Aryan Goel — GTM & Growth Engineer",
     description:
-      "GTM & Growth Engineer. Growth at TensorTonic (52K+ learners), analytics at Mastercard Advisors, AI agents at Nextvant. Open to 6-month internships, Jan 2027.",
+      "GTM & growth engineer at Nextvant and TensorTonic: AI agents, paid search and SEO. Ex-Mastercard Advisors. Open to GTM & growth roles from Jan 2027.",
   },
 
   hero: {
-    eyebrow: "GTM & Growth Engineer · New Delhi",
-    // Headline confirmed by Aryan (Nov 2026). Alternatives kept for reference.
-    headline: { before: "I turn data and automation into ", accent: "growth", after: "." },
-    headlineAlternatives: ["I build the engines behind user growth.", "Growth, engineered and measured."],
-    bio: "I run growth at TensorTonic, an ML coding-practice platform with 52K+ learners. Before that I automated reporting for India's #1 card issuer at Mastercard Advisors, and left with a full-time offer. On the side I build AI agents that find buying signals at Nextvant, and I lead 180 Degrees Consulting at NSUT.",
+    eyebrow: "New Delhi, India · B.Tech ECE, NSUT ’27",
+    // "growth" is set in serif italic.
+    headline: { before: "I'm Aryan, a GTM & ", accent: "growth", after: " engineer." },
+    subline: "I grow products with paid search, SEO and AI agents, and I measure everything.",
+    previously:
+      "Previously at Mastercard Advisors: analytics and automation for India's #1 card issuer, ending in a full-time offer.",
     primaryCta: "Download resume",
     secondaryCta: { label: "See my work", href: "/work" },
   },
 
+  // Current roles, in the order they appear in the hero.
+  currently: [
+    {
+      company: "Nextvant",
+      about: "GTM & HubSpot services",
+      role: "Founder's Office Associate",
+      since: "Aug 2026",
+      line: "I own 2 client accounts and build AI agents that find buyers: 20 meetings booked so far.",
+      href: "/work/ai-buying-signal-engine",
+    },
+    {
+      company: "TensorTonic",
+      about: "ML coding practice, 52K+ learners",
+      role: "GTM & Growth Engineer",
+      since: "Sep 2026",
+      line: "I run growth across paid search, SEO/AEO and partnerships: +44% organic clicks in 2 months.",
+      href: "/work/tensortonic-growth",
+    },
+  ],
+
   metrics: [
     {
-      value: 52,
-      suffix: "K+",
-      label: "learners on the platform I grow",
-      source: "TensorTonic CRM, Nov 2026",
+      value: 20,
+      label: "meetings booked by my AI agents",
+      company: "Nextvant",
+      source: "Nextvant buying-signal engine, Nov 2026",
     },
     {
       value: 44,
       prefix: "+",
       suffix: "%",
       label: "organic search clicks in 2 months",
+      company: "TensorTonic",
       source: "Google Search Console, 15 Sep–12 Nov vs prior 59 days",
     },
     {
       value: 95,
       suffix: "%",
-      label: "faster reporting at Mastercard",
+      label: "faster quarterly reporting",
+      company: "Mastercard",
       source: "120 → 5 min per file, 10 file types",
     },
     {
-      value: 3000,
-      suffix: "+",
-      label: "accounts scanned by my AI agents",
-      source: "Nextvant buying-signal engine",
+      value: 52,
+      suffix: "K+",
+      label: "learners on the platform I grow",
+      company: "TensorTonic",
+      source: "TensorTonic CRM, Nov 2026",
     },
   ],
 
-  now: {
-    eyebrow: "Now · Nov 2026",
-    text: "Running the TensorTonic × Gradium AI developer contest (20 Nov – 20 Dec), building internal tools at Nextvant with Claude Code, and looking for a 6-month GTM or growth internship from January.",
-    // Update monthly along with the text.
-    updated: "2026-11-13",
+  whatIDo: [
+    {
+      title: "Growth & GTM",
+      body: "Paid search, SEO/AEO, partnerships and outbound that bring in users and pipeline.",
+      proof: "+44% organic clicks · 93 sign-ups in 3 weeks · +400% clicks for clients",
+      links: [
+        { label: "Growing TensorTonic", href: "/work/tensortonic-growth" },
+        { label: "3 international clients", href: "/work/nextvant-client-growth" },
+        { label: "AI toy US launch", href: "/work/ai-toy-us-launch" },
+      ],
+    },
+    {
+      title: "Analytics",
+      body: "SQL, Python and PySpark on large datasets, turned into decisions a client can act on.",
+      proof: "5.2M cardholders segmented · ~₹500 Cr incremental value",
+      links: [{ label: "Card activation at Mastercard", href: "/work/card-activation-analytics" }],
+    },
+    {
+      title: "AI & automation",
+      body: "Agents and pipelines that take repetitive work off a team's plate.",
+      proof: "120 → 5 min reporting · 20 meetings from AI agents",
+      links: [
+        { label: "AI buying-signal engine", href: "/work/ai-buying-signal-engine" },
+        { label: "Reporting automation", href: "/work/mastercard-qbr-automation" },
+      ],
+    },
+  ],
+
+  home: {
+    whatIDo: { eyebrow: "What I do", title: "Growth, analytics and automation, end to end" },
+    work: { eyebrow: "Selected work", title: "Three projects, with the numbers" },
+    experience: { eyebrow: "Experience", title: "Where I've worked" },
+    leadership: { eyebrow: "Leadership", title: "Teams I lead at NSUT" },
   },
 
   contactCta: {
-    heading: "Let's talk growth.",
-    subheading: "I reply within 24 hours.",
+    heading: "Hiring for January 2027? Let's talk.",
+    subheading: "I'm open to GTM, growth and analyst roles, and I reply within 24 hours.",
+    founderLine: "Building a startup and need GTM help?",
   },
 
   footer: {
-    tagline: "Let's build something that grows.",
     smallPrint: "© 2026 Aryan Goel · Built with Next.js",
   },
 
   pages: {
     work: {
       title: "Work",
-      intro: "Seven projects, each with the problem, what I did and what changed.",
+      intro:
+        "Seven projects across growth, analytics and automation. Each one shows the problem, what I did and what changed.",
       description:
         "Seven case studies in growth, analytics, automation and strategy: Google Ads, SEO, SQL, Python and AI agents, each with measured results.",
     },
     about: {
       title: "About",
       description:
-        "ECE student at NSUT turned GTM & growth engineer. How I work, my skills in data, growth and automation, and what I lead.",
+        "GTM & growth engineer at Nextvant and TensorTonic, ECE student at NSUT. My story, how I work, skills and what I lead.",
     },
     resume: {
       title: "Resume",
@@ -144,9 +198,10 @@ export const site: Site = {
     },
     contact: {
       title: "Say hello.",
-      intro: "Hiring for a 6-month GTM, growth or analyst role from January 2027? I'd love to talk.",
+      intro:
+        "Hiring for a GTM, growth or analyst role from January 2027, or need GTM help for your startup? I'd love to talk.",
       description:
-        "Email, book a 30-minute call or connect on LinkedIn. Open to 6-month internships from Jan 2027.",
+        "Email, book a 30-minute call or connect on LinkedIn. Open to GTM & growth roles from Jan 2027.",
     },
     notFound: {
       title: "This page churned.",

@@ -15,6 +15,7 @@ export function ImpactStrip() {
               prefix={m.prefix}
               suffix={m.suffix}
               label={m.label}
+              company={m.company}
               source={m.source}
               up={m.trend !== "none"}
             />

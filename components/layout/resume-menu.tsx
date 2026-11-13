@@ -22,12 +22,14 @@ export function ResumeMenu({
   className,
   align = "start",
   side = "bottom",
+  variant = "primary",
 }: {
   location: ResumeLocation;
   trigger?: "button" | "icon";
   className?: string;
   align?: "start" | "end";
   side?: "bottom" | "top";
+  variant?: "primary" | "secondary";
 }) {
   const [open, setOpen] = useState(false);
   const [last, setLast] = useState<Version | null>(null);
@@ -97,7 +99,7 @@ export function ResumeMenu({
         }}
         className={cn(
           trigger === "button"
-            ? buttonVariants({ variant: "primary" })
+            ? buttonVariants({ variant })
             : "inline-flex size-9 items-center justify-center rounded-button text-muted transition-colors duration-150 hover:bg-surface-2 hover:text-fg",
           className,
         )}

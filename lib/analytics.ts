@@ -4,7 +4,8 @@
  */
 import { track as vercelTrack } from "@vercel/analytics";
 
-export type ResumeLocation = "hero" | "sidebar" | "resume-page" | "palette" | "mobile-menu";
+export type ResumeLocation =
+  "hero" | "sidebar" | "resume-page" | "palette" | "mobile-menu" | "contact" | "case-study";
 
 type Events = {
   resume_download: { version: "gtm" | "analyst"; location: ResumeLocation };

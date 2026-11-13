@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCTA } from "@/components/home/contact-cta";
 import { Download } from "lucide-react";
 import { site } from "@/content/site";
 import { formatDate } from "@/lib/utils";
@@ -56,6 +57,9 @@ export default function ResumePage() {
 
       <section aria-label="Resume preview" className="mt-12">
         <ResumePreview resumes={site.resumes} />
+      </section>
+      <section aria-labelledby="resume-contact" className="mt-16">
+        <ContactCTA headingId="resume-contact" />
       </section>
     </div>
   );

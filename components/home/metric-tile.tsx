@@ -8,6 +8,8 @@ export type MetricTileProps = {
   /** Final value as text, e.g. "52K+" — always in the HTML for SEO and no-JS. */
   display: string;
   label: string;
+  /** Optional eyebrow above the number, e.g. the company it came from. */
+  company?: string;
   source?: string;
   up?: boolean;
   /** When set, the number counts up from 0 to `countTo` once on first view. */
@@ -27,6 +29,7 @@ const ease = (t: number) => 1 - Math.pow(2, -10 * t); // close to cubic-bezier(0
 export function MetricTile({
   display,
   label,
+  company,
   source,
   up,
   countTo,
@@ -70,6 +73,7 @@ export function MetricTile({
 
   const body = (
     <>
+      {company && <span className="mb-3 block eyebrow text-subtle">{company}</span>}
       <span
         className={cn(
           "block",

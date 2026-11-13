@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCTA } from "@/components/home/contact-cta";
 import { site } from "@/content/site";
 import { getAllCases } from "@/lib/mdx";
 import { CaseCard } from "@/components/work/case-card";
@@ -30,6 +31,9 @@ export default function WorkPage() {
           }))}
         />
       </div>
+      <section aria-labelledby="work-contact" className="mt-16">
+        <ContactCTA headingId="work-contact" />
+      </section>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCTA } from "@/components/home/contact-cta";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { site } from "@/content/site";
@@ -186,6 +187,9 @@ export default function AboutPage() {
         ) : (
           <Todo>Add 2–3 interests in content/about.ts.</Todo>
         )}
+      </section>
+      <section aria-labelledby="about-contact" className="mt-16">
+        <ContactCTA headingId="about-contact" />
       </section>
     </div>
   );

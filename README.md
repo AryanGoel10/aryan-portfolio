@@ -6,14 +6,14 @@ Personal portfolio for **Aryan Goel**, GTM & Growth Engineer. Built with Next.js
 
 Everything you'd want to change lives in [`/content`](./content):
 
-| File                    | What's in it                                                                                                  |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `content/site.ts`       | Name, links, availability badge, hero copy, the 4 impact metrics, Now card, page titles, resume files, domain |
-| `content/experience.ts` | Roles timeline on Home                                                                                        |
-| `content/leadership.ts` | 180DC and GDG cards                                                                                           |
-| `content/skills.ts`     | Skills on the About page (`true` = advanced ★)                                                                |
-| `content/about.ts`      | About story, "How I work", education, achievements, interests                                                 |
-| `content/work/*.mdx`    | One file per case study. Settings at the top between `---` lines, write-up below                              |
+| File                    | What's in it                                                                                                                           |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `content/site.ts`       | Name, links, availability, hero, current roles, the 4 metrics, "What I do" cards, section headings, contact copy, resume files, domain |
+| `content/experience.ts` | Roles timeline on Home                                                                                                                 |
+| `content/leadership.ts` | 180DC and GDG cards                                                                                                                    |
+| `content/skills.ts`     | Skills on the About page (`true` = advanced ★)                                                                                         |
+| `content/about.ts`      | About story, "How I work", education, achievements, interests                                                                          |
+| `content/work/*.mdx`    | One file per case study. Settings at the top between `---` lines, write-up below                                                       |
 
 **The easiest way to edit:** open the file on github.com, click the pencil icon, make the change and click **Commit changes**. Vercel redeploys the site automatically in about a minute.
 
@@ -23,7 +23,7 @@ Things to know:
 - **Every build checks your content.** If you make a typo (a missing quote, a field with the wrong name, a meta description over 160 characters), the deploy fails and the error names the file and field. Nothing broken ever goes live; the previous version stays up.
 - **In case-study files**, put text in double quotes if it contains `#` or `: ` (colon followed by a space), e.g. `outcome: "India's #1 card issuer: ..."`. Without quotes, everything after `#` is silently dropped.
 - **Featured case studies** on Home are the ones with `featured: true` (first three by `order`).
-- **Monthly:** update `now.text` and `now.updated` in `site.ts`.
+- **When your roles change:** edit `currently` in `site.ts` (the hero's "Currently" cards) and the `current: true` flags in `experience.ts`.
 - **When you replace a resume PDF:** keep the same file name in `public/resume/` and update `resumeLastUpdated` in `site.ts`. The short links `/resume/gtm` and `/resume/analyst` always point at the current files.
 - **Booking link:** `links.booking` in `site.ts` (currently Calendly). Set it to `null` to hide every "Book a call" button; change `bookingLabel` to change the button text.
 - **Drafts:** when you've rewritten the About story or "How I work", set `storyIsDraft` / `howIWorkIsDraft` to `false` in `about.ts` to remove the TODO boxes.

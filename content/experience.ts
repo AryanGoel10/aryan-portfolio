@@ -3,31 +3,33 @@ import { experienceSchema } from "./schema";
 
 export const experience = experienceSchema.parse([
   {
+    dates: "Aug 2026 – Now",
+    role: "Founder's Office Associate",
+    org: "Nextvant",
+    line: "GTM & HubSpot services. Rejoined to own 2 client accounts and build AI agents that find buyers (20 meetings booked).",
+    kind: "work",
+    current: true,
+  },
+  {
     dates: "Sep 2026 – Dec 2026",
     role: "GTM & Growth Engineer Intern",
     org: "TensorTonic",
-    line: "Growth across paid, SEO/AEO, partnerships and retention",
+    line: "Growth for an ML practice platform with 52K+ learners: paid search, SEO/AEO, partnerships and retention.",
     kind: "work",
-  },
-  {
-    dates: "Aug 2026 – Now",
-    role: "Founder's Office Associate",
-    org: "Nextvant (rejoined)",
-    line: "Own 2 client accounts; building AI agents and internal tools",
-    kind: "work",
+    current: true,
   },
   {
     dates: "May 2026 – Jul 2026",
     role: "Associate Consultant Intern",
     org: "Mastercard Advisors",
-    line: "Performance analytics for India's #1 card issuer; full-time offer, joining May 2027",
+    line: "Performance analytics and reporting automation for India's #1 card issuer. Full-time offer, joining May 2027.",
     kind: "work",
   },
   {
     dates: "Jun 2025 – Apr 2026",
     role: "Founder's Office Associate",
     org: "Nextvant",
-    line: "GTM for 3 international clients",
+    line: "GTM for 3 international clients in Australia, Europe and China: +280% impressions, +400% clicks.",
     kind: "work",
   },
   {

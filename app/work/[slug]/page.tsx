@@ -150,7 +150,7 @@ async function CaseStudy({ slug }: { slug: string }) {
       </nav>
 
       <section aria-labelledby="case-contact" className="mt-16">
-        <ContactCTA headingId="case-contact" />
+        <ContactCTA headingId="case-contact" location="case-study" />
       </section>
     </article>
   );

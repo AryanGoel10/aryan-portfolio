@@ -31,6 +31,8 @@ export const metricSchema = z.object({
   /** Text after the number, e.g. "K+" or "%". */
   suffix: z.string().optional(),
   label: z.string().min(1),
+  /** Where the number comes from, shown above it, e.g. "Nextvant". */
+  company: z.string().min(1),
   /** Shown on hover / focus / tap. Every number needs a source. */
   source: z.string().min(1),
   /** Green up arrow next to the label. Defaults to "up". */
@@ -86,23 +88,55 @@ export const siteSchema = z.object({
     eyebrow: z.string(),
     /** The headline is split so one word can be set in serif italic. */
     headline: z.object({ before: z.string(), accent: z.string(), after: z.string() }),
-    headlineAlternatives: z.array(z.string()),
-    bio: z.string(),
+    subline: z.string(),
+    /** Short credibility line under the current roles. */
+    previously: z.string(),
     primaryCta: z.string(),
     secondaryCta: z.object({ label: z.string(), href }),
   }),
+  /** Current roles, shown in the hero in this order. */
+  currently: z
+    .array(
+      z.object({
+        company: z.string(),
+        /** What the company is, in a few words. */
+        about: z.string(),
+        role: z.string(),
+        since: z.string(),
+        /** What you do there, one sentence. */
+        line: z.string(),
+        /** Case study that shows the work. */
+        href,
+      }),
+    )
+    .min(1)
+    .max(3),
   metrics: z.array(metricSchema).min(3).max(4),
-  now: z.object({
-    eyebrow: z.string(),
-    text: z.string(),
-    updated: isoDate,
+  /** "What I do" cards on Home. */
+  whatIDo: z
+    .array(
+      z.object({
+        title: z.string(),
+        body: z.string(),
+        proof: z.string(),
+        links: z.array(z.object({ label: z.string(), href })).min(1),
+      }),
+    )
+    .length(3),
+  /** Section headings on Home. */
+  home: z.object({
+    whatIDo: z.object({ eyebrow: z.string(), title: z.string() }),
+    work: z.object({ eyebrow: z.string(), title: z.string() }),
+    experience: z.object({ eyebrow: z.string(), title: z.string() }),
+    leadership: z.object({ eyebrow: z.string(), title: z.string() }),
   }),
   contactCta: z.object({
     heading: z.string(),
     subheading: z.string(),
+    /** Secondary line for founders who want GTM help. */
+    founderLine: z.string(),
   }),
   footer: z.object({
-    tagline: z.string(),
     smallPrint: z.string(),
   }),
   pages: z.object({
@@ -125,6 +159,8 @@ export const experienceSchema = z.array(
     org: z.string(),
     line: z.string(),
     kind: z.enum(["work", "education"]),
+    /** Shows a "Current" pill. */
+    current: z.boolean().optional(),
   }),
 );
 

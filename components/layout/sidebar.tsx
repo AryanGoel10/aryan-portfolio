@@ -28,7 +28,15 @@ export function Sidebar() {
         </Link>
         <p className="mt-5 text-lg leading-tight font-semibold text-fg">{site.name}</p>
         <p className="mt-1 text-meta text-muted">{site.role}</p>
-        {site.availability.open && <AvailabilityBadge label={site.availability.badge} className="mt-4" />}
+        <p className="mt-2 text-meta font-normal text-subtle">
+          Now at <span className="text-muted">{site.currently.map((c) => c.company).join(" & ")}</span>
+        </p>
+        {site.availability.open && (
+          <AvailabilityBadge
+            label={site.availability.badge}
+            className="mt-4 rounded-[12px] py-1.5 leading-snug whitespace-normal"
+          />
+        )}
 
         <nav aria-label="Primary" className="mt-7">
           <NavLinks showSections />

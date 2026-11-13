@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (SPEC section 5). Components only ever use these —
+ * never raw hex values. Dark is the default; `.light` on <html> switches.
+ */
+:root {
+  --bg: #0a0a0b;
+  --surface: #121214;
+  --surface-2: #1a1a1d;
+  --border: #26262b;
+  --text: #ededef;
+  --text-muted: #a1a1aa;
+  --text-subtle: #7a7a84;
+  --accent: #f5a524;
+  --accent-soft: rgba(245, 165, 36, 0.12);
+  --positive: #4ade80;
+  --selection: rgba(245, 165, 36, 0.3);
+  --on-accent: #0a0a0b;
+  --shadow-card: none;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+:root.light {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f4f4f2;
+  --border: #e4e4e0;
+  --text: #18181b;
+  --text-muted: #52525b;
+  --text-subtle: #71717a;
+  --accent: #b45309;
+  --accent-soft: rgba(180, 83, 9, 0.1);
+  --positive: #15803d;
+  --selection: rgba(180, 83, 9, 0.2);
+  --on-accent: #ffffff;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
+  color-scheme: light;
+}
+
+@custom-variant light (&:where(.light, .light *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-on-accent: var(--on-accent);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-button: 8px;
+  --radius-card: 14px;
+  --radius-portrait: 20px;
+
+  --shadow-card: var(--shadow-card);
+  --ease-out-expo: var(--ease-out-expo);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--selection);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

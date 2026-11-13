@@ -20,15 +20,15 @@ export function ContactCTA({ headingId = "contact-title" }: { headingId?: string
         >
           Email me <Mail aria-hidden strokeWidth={1.5} />
         </TrackedLink>
-        {site.links.calcom && (
+        {site.links.booking && (
           <TrackedLink
-            href={site.links.calcom}
+            href={site.links.booking}
             target="_blank"
             rel="noopener"
             className={buttonVariants({ variant: "secondary" })}
-            tracking={{ event: "contact_click", channel: "calcom" }}
+            tracking={{ event: "contact_click", channel: "booking" }}
           >
-            Book a 15-min call <CalendarDays aria-hidden strokeWidth={1.5} />
+            {site.links.bookingLabel} <CalendarDays aria-hidden strokeWidth={1.5} />
           </TrackedLink>
         )}
         <TrackedLink

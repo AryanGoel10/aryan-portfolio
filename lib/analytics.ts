@@ -8,7 +8,7 @@ export type ResumeLocation = "hero" | "sidebar" | "resume-page" | "palette" | "m
 
 type Events = {
   resume_download: { version: "gtm" | "analyst"; location: ResumeLocation };
-  contact_click: { channel: "email" | "calcom" | "linkedin" };
+  contact_click: { channel: "email" | "booking" | "linkedin" };
   email_copy: Record<string, never>;
   case_view: { slug: string };
   palette_open: Record<string, never>;

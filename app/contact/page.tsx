@@ -27,7 +27,7 @@ export default function ContactPage() {
       <h1 className="text-display text-fg">{site.pages.contact.title}</h1>
       <p className="mt-4 max-w-[52ch] text-lg text-muted">{site.pages.contact.intro}</p>
 
-      <ul className={`mt-10 grid gap-4 ${site.links.calcom ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+      <ul className={`mt-10 grid gap-4 ${site.links.booking ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
         <li className={card}>
           <Mail size={20} strokeWidth={1.5} className="text-accent" aria-hidden />
           <h2 className="mt-4 text-h3 text-fg">
@@ -45,18 +45,18 @@ export default function ContactPage() {
           </div>
         </li>
 
-        {site.links.calcom && (
+        {site.links.booking && (
           <li className={card}>
             <CalendarDays size={20} strokeWidth={1.5} className="text-accent" aria-hidden />
             <h2 className="mt-4 text-h3 text-fg">
               <TrackedLink
-                href={site.links.calcom}
+                href={site.links.booking}
                 target="_blank"
                 rel="noopener"
                 className={stretched}
-                tracking={{ event: "contact_click", channel: "calcom" }}
+                tracking={{ event: "contact_click", channel: "booking" }}
               >
-                Book a 15-min call
+                {site.links.bookingLabel}
               </TrackedLink>
             </h2>
             <p className="mt-1 mb-4 text-[15px] text-muted">Pick a time that works for you.</p>

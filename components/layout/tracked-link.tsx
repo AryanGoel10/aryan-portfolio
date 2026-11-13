@@ -5,7 +5,7 @@ import { track, type ResumeLocation } from "@/lib/analytics";
 
 type Tracking =
   | { event: "resume_download"; version: "gtm" | "analyst"; location: ResumeLocation }
-  | { event: "contact_click"; channel: "email" | "calcom" | "linkedin" };
+  | { event: "contact_click"; channel: "email" | "booking" | "linkedin" };
 
 /** An <a> that fires a Vercel Analytics event on click. */
 export function TrackedLink({ tracking, onClick, ...props }: ComponentProps<"a"> & { tracking: Tracking }) {

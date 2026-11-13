@@ -100,12 +100,12 @@ export default function CommandMenu({
               <Item onSelect={() => run(() => void copyEmail())} icon={Copy}>
                 Copy email
               </Item>
-              {site.links.calcom && (
+              {site.links.booking && (
                 <Item
                   onSelect={() =>
                     run(() => {
-                      track("contact_click", { channel: "calcom" });
-                      openUrl(site.links.calcom!);
+                      track("contact_click", { channel: "booking" });
+                      openUrl(site.links.booking!);
                     })
                   }
                   icon={CalendarDays}

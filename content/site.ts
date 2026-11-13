@@ -28,8 +28,9 @@ export const site: Site = {
     linkedin: "https://www.linkedin.com/in/aryangoel26",
     github: "https://github.com/AryanGoel10",
     sourceRepo: "https://github.com/AryanGoel10/aryan-portfolio",
-    // TODO(Aryan): paste your Cal.com 15-minute "Intro call" link. While null, "Book a call" stays hidden.
-    calcom: null,
+    // Booking link. Set to null to hide every "Book a call" button.
+    booking: "https://calendly.com/goel-aryan26/30min",
+    bookingLabel: "Book a 30-min call",
   },
 
   nav: [
@@ -145,7 +146,7 @@ export const site: Site = {
       title: "Say hello.",
       intro: "Hiring for a 6-month GTM, growth or analyst role from January 2027? I'd love to talk.",
       description:
-        "Email, book a 15-minute call or connect on LinkedIn. Open to 6-month internships from Jan 2027.",
+        "Email, book a 30-minute call or connect on LinkedIn. Open to 6-month internships from Jan 2027.",
     },
     notFound: {
       title: "This page churned.",

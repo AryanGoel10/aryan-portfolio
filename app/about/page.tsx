@@ -137,6 +137,36 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section aria-labelledby="roles-title" className="border-t border-line section-y">
+        <div className="grid gap-12 sm:grid-cols-[1fr_200px]">
+          <div>
+            <SectionHeading id="roles-title" eyebrow="Also" title="Other roles" />
+            <ul className="border-t border-line">
+              {about.otherRoles.map((r) => (
+                <li
+                  key={r.role + r.org}
+                  className="grid gap-1 border-b border-line py-4 sm:grid-cols-[150px_1fr] sm:gap-6"
+                >
+                  <p className="font-mono text-[13px] leading-6 text-subtle">{r.dates}</p>
+                  <p className="text-[15px] text-fg">
+                    {r.role}
+                    <span className="text-muted">, {r.org}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHeading eyebrow="Languages" title="I speak" />
+            <ul className="space-y-2 text-[15px] text-muted">
+              {about.languages.map((l) => (
+                <li key={l}>{l}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section aria-labelledby="outside-title" className="border-t border-line section-y">
         <SectionHeading id="outside-title" eyebrow="Off the clock" title="Outside work" />
         {about.outsideWork.length > 0 ? (

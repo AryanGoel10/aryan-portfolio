@@ -25,7 +25,7 @@ Things to know:
 - **Featured case studies** on Home are the ones with `featured: true` (first three by `order`).
 - **Monthly:** update `now.text` and `now.updated` in `site.ts`.
 - **When you replace a resume PDF:** keep the same file name in `public/resume/` and update `resumeLastUpdated` in `site.ts`. The short links `/resume/gtm` and `/resume/analyst` always point at the current files.
-- **Cal.com:** paste your booking link into `links.calcom` in `site.ts`. Until then every "Book a call" button stays hidden.
+- **Booking link:** `links.booking` in `site.ts` (currently Calendly). Set it to `null` to hide every "Book a call" button; change `bookingLabel` to change the button text.
 - **Drafts:** when you've rewritten the About story or "How I work", set `storyIsDraft` / `howIWorkIsDraft` to `false` in `about.ts` to remove the TODO boxes.
 
 ## Deploying on Vercel (one time, ~5 minutes)
@@ -48,13 +48,13 @@ From then on, every push to `main` redeploys the site, and every pull request ge
 
 Vercel Analytics records page views plus these custom events (see `lib/analytics.ts`):
 
-| Event             | Fires when                         | Properties                                                                               |
-| ----------------- | ---------------------------------- | ---------------------------------------------------------------------------------------- |
-| `resume_download` | Either PDF is opened               | `version` (gtm / analyst), `location` (hero, sidebar, resume-page, palette, mobile-menu) |
-| `contact_click`   | Email, Cal.com or LinkedIn clicked | `channel`                                                                                |
-| `email_copy`      | Copy-email used                    | none                                                                                     |
-| `case_view`       | A case study page is viewed        | `slug`                                                                                   |
-| `palette_open`    | ⌘K palette opened                  | none                                                                                     |
+| Event             | Fires when                              | Properties                                                                               |
+| ----------------- | --------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `resume_download` | Either PDF is opened                    | `version` (gtm / analyst), `location` (hero, sidebar, resume-page, palette, mobile-menu) |
+| `contact_click`   | Email, booking link or LinkedIn clicked | `channel`                                                                                |
+| `email_copy`      | Copy-email used                         | none                                                                                     |
+| `case_view`       | A case study page is viewed             | `slug`                                                                                   |
+| `palette_open`    | ⌘K palette opened                       | none                                                                                     |
 
 Analytics only loads on Vercel, so local runs stay clean.
 

@@ -69,8 +69,10 @@ export const siteSchema = z.object({
     linkedin: z.url(),
     github: z.url(),
     sourceRepo: z.url(),
-    /** Cal.com booking link. Leave null until it exists — the button hides itself. */
-    calcom: z.url().nullable(),
+    /** Booking link (Calendly, Cal.com…). Leave null to hide every "Book a call" button. */
+    booking: z.url().nullable(),
+    /** Button text for the booking link, e.g. "Book a 30-min call". */
+    bookingLabel: z.string(),
   }),
   nav: z.array(z.object({ label: z.string(), href, icon: navIconSchema })),
   resumes: z.array(resumeSchema).length(2),
@@ -164,6 +166,9 @@ export const aboutSchema = z.object({
     z.object({ qualification: z.string(), institution: z.string(), years: z.string(), result: z.string() }),
   ),
   achievements: z.array(z.string()),
+  /** Smaller roles shown as a compact list on About. */
+  otherRoles: z.array(z.object({ role: z.string(), org: z.string(), dates: z.string() })),
+  languages: z.array(z.string()),
   /** 2–3 interests. Empty array shows a TODO placeholder. */
   outsideWork: z.array(z.object({ title: z.string(), line: z.string() })),
 });

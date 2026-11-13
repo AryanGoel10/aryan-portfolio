@@ -17,13 +17,13 @@ export function Footer() {
           >
             Email me <Mail aria-hidden strokeWidth={1.5} />
           </TrackedLink>
-          {site.links.calcom && (
+          {site.links.booking && (
             <TrackedLink
-              href={site.links.calcom}
+              href={site.links.booking}
               target="_blank"
               rel="noopener"
               className={buttonVariants({ variant: "secondary" })}
-              tracking={{ event: "contact_click", channel: "calcom" }}
+              tracking={{ event: "contact_click", channel: "booking" }}
             >
               Book a call <CalendarDays aria-hidden strokeWidth={1.5} />
             </TrackedLink>

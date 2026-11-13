@@ -12,7 +12,7 @@ export const site: Site = {
   positioning: "GTM & Growth Engineer who turns data and automation into users, pipeline and revenue.",
 
   // Live address. Change to your own domain (e.g. https://aryangoel.in) once you buy one.
-  url: "https://aryan-portfolio-aryan-fd76.vercel.app",
+  url: "https://aryan-goel.vercel.app",
 
   location: "New Delhi, India",
   educationShort: "B.Tech ECE, NSUT ’27",

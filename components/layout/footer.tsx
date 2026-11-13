@@ -4,7 +4,8 @@ import { TrackedLink } from "./tracked-link";
 
 /** Slim footer on every page. Each page ends with its own contact block, so no CTA here. */
 export function Footer() {
-  const link = "inline-flex min-h-11 min-w-11 items-center justify-center hover:text-fg sm:min-h-0 sm:min-w-0";
+  const link =
+    "inline-flex min-h-11 min-w-11 items-center justify-center hover:text-fg sm:min-h-0 sm:min-w-0";
   return (
     <footer className="mt-8 flex flex-col gap-3 border-t border-line py-6 text-meta text-subtle sm:flex-row sm:items-center sm:justify-between">
       <p>{site.footer.smallPrint}</p>

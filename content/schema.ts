@@ -189,6 +189,11 @@ export const caseFrontmatterSchema = z.object({
     .array(z.object({ value: z.string(), label: z.string(), source: z.string().optional() }))
     .min(1)
     .max(4),
+  /**
+   * Optional pipeline shown as a diagram on the case study, in order.
+   * Each step: what happens and which tools do it.
+   */
+  workflow: z.array(z.object({ step: z.string(), tools: z.array(z.string()).min(1) })).optional(),
   featured: z.boolean().default(false),
   /** Sort order on /work (1 = first). */
   order: z.number().int().positive(),

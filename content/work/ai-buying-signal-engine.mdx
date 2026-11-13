@@ -5,24 +5,38 @@ role: Founder's Office Associate
 dates: Aug 2026 – Present
 year: "2026"
 category: Automation
-outcome: Agents that scan accounts for buying signals and route qualified ones into HubSpot outbound.
-tags: [Clay, n8n, OpenAI/Claude APIs]
+outcome: An AI outbound engine that scanned 3,000+ accounts for buying signals and has booked 20 meetings so far.
+tags: [Clay, Apify, Instantly, HeyReach]
 metrics:
   - value: "3,000+"
     label: accounts scanned
     source: Nextvant buying-signal engine
-  - value: "TODO"
-    label: meetings booked
+  - value: "20"
+    label: meetings booked so far
+    source: Nextvant, Nov 2026
+workflow:
+  - step: Scrape buying signals
+    tools: [Apify]
+  - step: Enrich and qualify accounts
+    tools: [Clay, Apollo]
+  - step: Review in Slack
+    tools: [Slack]
+  - step: Generate personalised messages
+    tools: [OpenAI/Claude APIs]
+  - step: Send across email and LinkedIn
+    tools: [Instantly, HeyReach]
 featured: true
 order: 4
-description: AI agents built with Clay, n8n, Make and OpenAI/Claude APIs that scanned 3,000+ accounts for buying signals and fed HubSpot outbound.
+description: "An AI outbound engine built with Apify, Clay, Apollo, Instantly and HeyReach: 3,000+ accounts scanned for buying signals, 20 meetings booked."
 ---
 
-{/* Full write-up is written in Phase 3. Facts to expand, from SPEC.md section 6.4: */}
+{/* Full write-up is written in Phase 3. Facts to expand: */}
 
 **Facts to expand (Phase 3):**
 
-- Built agents with Clay, n8n, Make and OpenAI/Claude APIs that detect buying signals.
-- Route qualified accounts into HubSpot outbound for Nextvant's GTM services; booked meetings.
-- TODO(Aryan): number of meetings booked.
-- TODO(Aryan): one non-confidential screenshot of the workflow.
+- Built AI agents that detect buying signals for Nextvant's GTM services.
+- Pipeline: Apify scrapes signals → Clay enriches and qualifies (Apollo for contact enrichment) → accounts land in Slack → AI generates personalised messages → sent via Instantly (email) and HeyReach (LinkedIn).
+- Resume also lists n8n, Make and HubSpot as part of the stack.
+- Results: 3,000+ accounts scanned; 20 meetings booked so far (Nov 2026).
+- Workflow diagram is generated from the `workflow` field above (Phase 3).
+- TODO(Aryan): one non-confidential screenshot of the workflow (optional, diagram covers it).

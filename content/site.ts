@@ -72,7 +72,7 @@ export const site = siteSchema.parse({
 
   hero: {
     eyebrow: "GTM & Growth Engineer · New Delhi",
-    // TODO(Aryan): pick a headline. Default below; alternatives listed underneath.
+    // Headline confirmed by Aryan (Nov 2026). Alternatives kept for reference.
     headline: { before: "I turn data and automation into ", accent: "growth", after: "." },
     headlineAlternatives: ["I build the engines behind user growth.", "Growth, engineered and measured."],
     bio: "I run growth at TensorTonic, an ML coding-practice platform with 52K+ learners. Before that I automated reporting for India's #1 card issuer at Mastercard Advisors, and left with a full-time offer. On the side I build AI agents that find buying signals at Nextvant, and I lead 180 Degrees Consulting at NSUT.",

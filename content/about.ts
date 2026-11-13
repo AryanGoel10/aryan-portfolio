@@ -54,6 +54,10 @@ export const about = aboutSchema.parse({
     "Blue Blazer for Academic Excellence, 3 years, DPS R.K. Puram",
   ],
 
-  // TODO(Aryan): add 2–3 interests, e.g. { title: "Football", line: "Midfielder, Sunday league." }
-  outsideWork: [],
+  // Interests from Aryan; the one-liners are drafts — edit freely.
+  outsideWork: [
+    { title: "Football", line: "Playing or watching, it's how I switch off." },
+    { title: "Stock market", line: "Following markets and the businesses behind the tickers." },
+    { title: "New places", line: "Always hunting for the next place to visit." },
+  ],
 });

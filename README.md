@@ -61,10 +61,10 @@ Analytics only loads on Vercel, so local runs stay clean.
 **UTM links for outreach**, so you can see which channel brings visitors:
 
 ```
-https://aryangoel.in/?utm_source=linkedin&utm_campaign=jan27-internships
-https://aryangoel.in/?utm_source=email&utm_campaign=jan27-internships
-https://aryangoel.in/?utm_source=naukri&utm_campaign=jan27-internships
-https://aryangoel.in/?utm_source=internshala&utm_campaign=jan27-internships
+https://aryan-portfolio-aryan-fd76.vercel.app/?utm_source=linkedin&utm_campaign=jan27-internships
+https://aryan-portfolio-aryan-fd76.vercel.app/?utm_source=email&utm_campaign=jan27-internships
+https://aryan-portfolio-aryan-fd76.vercel.app/?utm_source=naukri&utm_campaign=jan27-internships
+https://aryan-portfolio-aryan-fd76.vercel.app/?utm_source=internshala&utm_campaign=jan27-internships
 ```
 
 ## Running it locally (optional)

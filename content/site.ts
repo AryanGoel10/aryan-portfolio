@@ -11,8 +11,8 @@ export const site: Site = {
   role: "GTM & Growth Engineer",
   positioning: "GTM & Growth Engineer who turns data and automation into users, pipeline and revenue.",
 
-  // TODO(Aryan): replace with the domain you buy (aryangoel.in / .com / .dev).
-  url: "https://aryangoel.in",
+  // Live address. Change to your own domain (e.g. https://aryangoel.in) once you buy one.
+  url: "https://aryan-portfolio-aryan-fd76.vercel.app",
 
   location: "New Delhi, India",
   educationShort: "B.Tech ECE, NSUT ’27",

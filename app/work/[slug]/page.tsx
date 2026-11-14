@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
 import { getAllCases, getCase, getNeighbours, readingTime } from "@/lib/mdx";
 import { TagLine } from "@/components/ui/primitives";
+import { CompanyLogo } from "@/components/ui/company-logo";
 import { MetricTile } from "@/components/home/metric-tile";
 import { ContactCTA } from "@/components/home/contact-cta";
 import { mdxComponents } from "@/components/work/mdx-components";
@@ -96,8 +97,9 @@ async function CaseStudy({ slug }: { slug: string }) {
       </nav>
 
       <header className="mt-8">
-        <p className="eyebrow text-subtle">
-          {c.company} · {c.dates} · {c.role}
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 eyebrow text-subtle">
+          <CompanyLogo company={c.company} size={24} className="rounded-[6px]" />
+          {c.company} · {c.dates}
         </p>
         <h1 className="mt-4 text-[32px] leading-[1.1] font-semibold tracking-[-0.03em] text-fg sm:text-[44px]">
           {c.title}
@@ -108,20 +110,71 @@ async function CaseStudy({ slug }: { slug: string }) {
           <span className="text-meta text-subtle">{minutes} min read</span>
         </div>
 
-        <>
-          <ul
-            className={`mt-8 grid grid-cols-2 gap-3 sm:gap-4 ${c.metrics.length >= 4 ? "xl:grid-cols-4" : c.metrics.length === 3 ? "sm:grid-cols-3" : ""}`}
-          >
-            {c.metrics.map((m) => (
-              <li key={m.label}>
-                <MetricTile display={m.value} label={m.label} source={m.source} />
-              </li>
-            ))}
-          </ul>
-        </>
+        <ul
+          className={`mt-8 grid grid-cols-2 gap-3 sm:gap-4 ${c.metrics.length >= 4 ? "xl:grid-cols-4" : c.metrics.length === 3 ? "sm:grid-cols-3" : ""}`}
+        >
+          {c.metrics.map((m) => (
+            <li key={m.label}>
+              <MetricTile display={m.value} label={m.label} source={m.source} compact />
+            </li>
+          ))}
+        </ul>
       </header>
 
+      <section aria-labelledby="summary-title" className="mt-10 grid gap-6 lg:grid-cols-[1fr_260px]">
+        <div>
+          <h2 id="summary-title" className="eyebrow text-accent">
+            In short
+          </h2>
+          <p className="mt-3 max-w-[62ch] text-[17px] leading-relaxed text-fg">{c.summary}</p>
+        </div>
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-4 rounded-card border border-line bg-surface p-5 text-[14px] shadow-card lg:grid-cols-1">
+          <div className="col-span-2 lg:col-span-1">
+            <dt className="eyebrow text-subtle">Company</dt>
+            <dd className="mt-1 text-fg">
+              {c.company}
+              <span className="block text-muted">{c.companyAbout}</span>
+            </dd>
+          </div>
+          <div>
+            <dt className="eyebrow text-subtle">My role</dt>
+            <dd className="mt-1 text-fg">{c.role}</dd>
+          </div>
+          <div>
+            <dt className="eyebrow text-subtle">When</dt>
+            <dd className="mt-1 text-fg">{c.dates}</dd>
+          </div>
+          {c.team && (
+            <div className="col-span-2 lg:col-span-1">
+              <dt className="eyebrow text-subtle">Team</dt>
+              <dd className="mt-1 text-fg">{c.team}</dd>
+            </div>
+          )}
+          <div className="col-span-2 lg:col-span-1">
+            <dt className="eyebrow text-subtle">Area</dt>
+            <dd className="mt-1 text-fg">{c.category}</dd>
+          </div>
+        </dl>
+      </section>
+
       <div className="mt-12 max-w-[68ch] border-t border-line pt-10">{content}</div>
+
+      {c.glossary && c.glossary.length > 0 && (
+        <section aria-labelledby="terms-title" className="mt-12 max-w-[68ch] border-t border-line pt-10">
+          <h2 id="terms-title" className="text-h2 text-fg">
+            Key terms
+          </h2>
+          <p className="mt-2 text-[15px] text-muted">New to some of the jargon? Here&apos;s what it means.</p>
+          <dl className="mt-6 divide-y divide-line rounded-card border border-line bg-surface">
+            {c.glossary.map((g) => (
+              <div key={g.term} className="grid gap-1 p-4 sm:grid-cols-[180px_1fr] sm:gap-4">
+                <dt className="text-[15px] font-semibold text-fg">{g.term}</dt>
+                <dd className="text-[15px] leading-relaxed text-muted">{g.meaning}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
 
       <nav
         aria-label="More case studies"

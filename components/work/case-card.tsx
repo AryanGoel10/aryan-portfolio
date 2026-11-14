@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/mdx";
 import { TagLine } from "@/components/ui/primitives";
+import { CompanyLogo } from "@/components/ui/company-logo";
 import { cn } from "@/lib/utils";
 
 /** Case-study card: eyebrow (company · year), title, one-line outcome, 3 tags, arrow on hover. */
@@ -24,7 +25,8 @@ export function CaseCard({
         size === "large" && "sm:p-8",
       )}
     >
-      <p className="eyebrow text-subtle">
+      <p className="flex items-center gap-2 eyebrow text-subtle">
+        <CompanyLogo company={study.company} size={22} className="rounded-[6px]" />
         {study.company} · {study.year}
       </p>
       <Heading

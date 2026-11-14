@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CompanyLogo } from "@/components/ui/company-logo";
 
 export type MetricTileProps = {
   /** Final value as text, e.g. "52K+" — always in the HTML for SEO and no-JS. */
@@ -16,6 +17,8 @@ export type MetricTileProps = {
   countTo?: number;
   prefix?: string;
   suffix?: string;
+  /** Smaller number for dense strips (case-study headers). */
+  compact?: boolean;
   className?: string;
 };
 
@@ -35,6 +38,7 @@ export function MetricTile({
   countTo,
   prefix = "",
   suffix = "",
+  compact = false,
   className,
 }: MetricTileProps) {
   const numRef = useRef<HTMLSpanElement>(null);
@@ -73,7 +77,12 @@ export function MetricTile({
 
   const body = (
     <>
-      {company && <span className="mb-3 block eyebrow text-subtle">{company}</span>}
+      {company && (
+        <span className="mb-3 flex items-center gap-2 eyebrow text-subtle">
+          <CompanyLogo company={company} size={20} className="rounded-[5px]" />
+          {company}
+        </span>
+      )}
       <span
         className={cn(
           "block",
@@ -84,7 +93,11 @@ export function MetricTile({
           {display}
           {up ? " (up)" : ""}
         </span>
-        <span ref={numRef} aria-hidden className="text-metric text-fg">
+        <span
+          ref={numRef}
+          aria-hidden
+          className={cn("text-metric text-fg", compact && "text-[26px] sm:text-[30px]")}
+        >
           {display}
         </span>
       </span>

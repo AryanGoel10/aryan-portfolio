@@ -22,9 +22,11 @@ Things to know:
 - **Search for `TODO`** to find everything still waiting on you. Unfinished items also show on the site as dashed amber "TODO" boxes.
 - **Every build checks your content.** If you make a typo (a missing quote, a field with the wrong name, a meta description over 160 characters), the deploy fails and the error names the file and field. Nothing broken ever goes live; the previous version stays up.
 - **In case-study files**, put text in double quotes if it contains `#` or `: ` (colon followed by a space), e.g. `outcome: "India's #1 card issuer: ..."`. Without quotes, everything after `#` is silently dropped.
+- **Case studies** also have `summary` (the "In short" paragraph), `companyAbout`, optional `team`, and optional `glossary` (the "Key terms" list).
+- **Logos** live in `public/logos/` and are mapped to company names in `content/logos.ts`.
 - **Featured case studies** on Home are the ones with `featured: true` (first three by `order`).
 - **When your roles change:** edit `currently` in `site.ts` (the hero's "Currently" cards) and the `current: true` flags in `experience.ts`.
-- **When you replace a resume PDF:** keep the same file name in `public/resume/` and update `resumeLastUpdated` in `site.ts`. The short links `/resume/gtm` and `/resume/analyst` always point at the current files.
+- **When you replace a resume PDF:** keep the same file name in `public/resume/`, update `resumeLastUpdated` in `site.ts`, and replace the preview image in `public/resume/preview/` (a PNG of page 1; export it from any PDF viewer, or ask Claude to regenerate it). The short links `/resume/gtm` and `/resume/analyst` always point at the current files.
 - **Booking link:** `links.booking` in `site.ts` (currently Calendly). Set it to `null` to hide every "Book a call" button; change `bookingLabel` to change the button text.
 - **Drafts:** when you've rewritten the About story or "How I work", set `storyIsDraft` / `howIWorkIsDraft` to `false` in `about.ts` to remove the TODO boxes.
 

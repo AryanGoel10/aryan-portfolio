@@ -1,11 +1,13 @@
 ---
 title: AI agents that find buyers before they raise their hand
 company: Nextvant
+companyAbout: GTM & HubSpot services for B2B businesses
 role: Founder's Office Associate
 dates: Aug 2026 – Present
 year: "2026"
 category: Automation
-outcome: An AI outbound engine that scanned 3,000+ accounts for buying signals and has booked 20 meetings so far.
+outcome: "An AI outbound engine that has scanned 3,000+ accounts for buying signals and booked 20 meetings so far."
+summary: "Nextvant needs a steady flow of sales conversations with companies that could use its GTM services. I built a chain of AI agents that spots companies showing signs they need help, checks they're a good fit, writes a personal first message and sends it by email and LinkedIn. So far it has scanned 3,000+ accounts and booked 20 meetings."
 tags: [Clay, Apify, Instantly, HeyReach]
 metrics:
   - value: "3,000+"
@@ -25,36 +27,57 @@ workflow:
     tools: [OpenAI/Claude APIs]
   - step: Send across email and LinkedIn
     tools: [Instantly, HeyReach]
+glossary:
+  - term: Buying signal
+    meaning: A public sign that a company may need what you sell right now. Reaching out at that moment makes a message far more relevant than a cold pitch.
+  - term: Enrichment
+    meaning: Filling in the details about a company or person, such as size, industry, role and contact details, so you can judge fit and reach the right person.
+  - term: Qualified account
+    meaning: A company that matches the profile of a good customer and is worth contacting.
+  - term: Outbound
+    meaning: Sales outreach you start yourself (emails, LinkedIn messages), as opposed to inbound, where the customer finds you first.
+  - term: Intent data
+    meaning: Data that suggests a company is actively researching a problem or product, used to decide who to contact and when.
 featured: true
 order: 1
-description: "An AI outbound engine built with Apify, Clay, Apollo, Instantly and HeyReach: 3,000+ accounts scanned for buying signals, 20 meetings booked."
+description: "AI agents built with Apify, Clay, Apollo, Instantly and HeyReach that scanned 3,000+ accounts for buying signals and booked 20 meetings for Nextvant."
 ---
 
 ## Context
 
-Nextvant sells GTM services. I rejoined in August 2026 in an expanded founder's office role, and part of that is building the engine that finds Nextvant's own next clients.
+Nextvant is a GTM and HubSpot services company that works with B2B businesses. I first worked there from June 2025 to April 2026, and rejoined in August 2026, after my Mastercard internship, in an expanded founder's office role. Alongside owning two client accounts, I lead the build of the system that finds Nextvant's own next clients.
 
 ## The problem
 
-Finding the right accounts by hand doesn't scale, and generic outreach gets ignored. I wanted a system that spots buying signals, qualifies the account and reaches out with a message that's actually about them.
+A services business lives on conversations with the right companies at the right time. Doing that by hand is slow: you have to research each company, decide whether it's a fit, find the right person and write a message that doesn't read like a template. Generic messages get ignored, and careful ones don't scale.
 
-## What I did
+The goal was a system that does the research and first draft automatically, so outreach can be both personal and frequent.
 
-I built a pipeline of AI agents. Each step hands off to the next:
+## How the engine works
+
+Each step hands its output to the next one:
 
 <Workflow />
 
-1. **Scrape signals.** Apify collects buying signals from the web.
-2. **Enrich and qualify.** Clay enriches each account and scores it; Apollo fills in contact details.
-3. **Route to Slack.** Qualified accounts land in Slack.
-4. **Write the message.** OpenAI/Claude APIs generate a personalised message for each account.
-5. **Send.** Instantly handles email and HeyReach handles LinkedIn.
+1. **Spot the signal.** Apify collects buying signals: public signs that a company may need GTM help now.
+2. **Check the fit.** Clay enriches each account with company and contact details and scores it, and Apollo fills in contact information. Accounts that don't fit stop here.
+3. **Route it.** Qualified accounts are posted to Slack, so the team sees every lead the engine finds.
+4. **Write the first message.** OpenAI and Claude models draft a message specific to that company and its signal, not a mail-merge template.
+5. **Send it.** Instantly sends the email sequence and HeyReach handles LinkedIn outreach.
 
-This is one of several workflows. I also build automations in n8n and Make, and intent-data workflows in HubSpot.
+## What I did
+
+- **Designed the flow** from signal to sent message, deciding which tool does which job.
+- **Built the agents and the connections** between Apify, Clay, Apollo, Slack, the AI models, Instantly and HeyReach.
+- **Kept it running alongside client work**, as part of my founder's office role.
+
+This is one of several automations I've built at Nextvant. I also build workflows in n8n and Make, and intent-data workflows in HubSpot.
 
 <Callout title="Impact">
 - **3,000+ accounts scanned** for buying signals
-- **20 meetings booked so far** (November 2026)
+- **20 meetings booked so far** (as of November 2026)
+
+*How to read this:* "scanned" means the engine checked a company for signals and fit. "Meetings booked" are calls scheduled with prospective Nextvant clients that came from this outreach.
 </Callout>
 
 ## Tools

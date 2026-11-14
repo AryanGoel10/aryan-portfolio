@@ -1,49 +1,73 @@
 ---
 title: Finding ₹500 Cr in a 5.2M-cardholder portfolio
 company: Mastercard Advisors
+companyAbout: Mastercard's consulting and analytics arm
 role: Associate Consultant Intern, Performance Analytics
 dates: May 2026 – Jul 2026
 year: "2026"
 category: Analytics
-outcome: Turned a 5.2M-cardholder portfolio into a Go/No-Go activation plan worth ~₹500 Cr in incremental PV.
+outcome: "Turned a 5.2M-cardholder portfolio into a Go/No-Go activation plan worth ~₹500 Cr in incremental value."
+summary: "Many cardholders barely use their cards, and every unused card is lost revenue for the bank. For India's #1 card issuer, I split 5.2M credit cardholders into 7 groups, worked out which groups are worth a campaign, and ranked 2.6M debit cardholders by how likely they are to start using their cards. The plan is worth about ₹500 Cr in incremental value."
 tags: [SQL, PySpark, Segmentation]
 metrics:
   - value: "5.2M"
-    label: cardholders segmented
+    label: credit cardholders segmented
   - value: "7"
     label: segments, 5 in the activation set
   - value: "~₹500 Cr"
-    label: incremental PV
+    label: incremental present value
+    source: Go/No-Go ROI framework
   - value: "+12.59%"
-    label: projected activation uplift
-    source: vs −0.72% forecast
+    label: projected debit activation uplift
+    source: vs −0.72% baseline forecast
+glossary:
+  - term: Activation
+    meaning: Getting a cardholder to actually start (or resume) using their card.
+  - term: Segmentation
+    meaning: Splitting customers into groups that behave similarly, so each group gets the right offer.
+  - term: Revolve
+    meaning: Interest the bank earns when a customer carries a balance on their credit card from month to month.
+  - term: Interchange
+    meaning: A small fee the bank earns every time a card is used to pay.
+  - term: Present value (PV)
+    meaning: Future earnings expressed in today's money, so options can be compared fairly.
+  - term: Propensity
+    meaning: How likely someone is to do something, here to start using their debit card for payments.
+  - term: Go/No-Go framework
+    meaning: A simple rule for each segment, telling the client whether a campaign pays back (Go) or not (No-Go).
 featured: false
 order: 5
-description: Segmenting a 5.2M-cardholder credit portfolio and building propensity tiers with SQL and PySpark to find ~₹500 Cr in incremental value.
+description: "Segmenting a 5.2M-cardholder credit portfolio and building propensity tiers with SQL and PySpark to find ~₹500 Cr in incremental value."
 ---
 
 ## Context
 
-On the same Mastercard Advisors engagement for India's #1 card issuer, I worked on card activation. The question was simple: which cardholders should the bank try to activate, and is it worth the money?
+On the same Mastercard Advisors internship, I worked on card activation for India's #1 card issuer. The question was simple: **which cardholders should the bank try to activate, and is it worth the money?**
+
+*The client stays anonymous, and no client data appears on this page.*
 
 ## The problem
 
-The credit portfolio had 5.2M cardholders, and there were 2.6M debit cardholders who only used their cards at ATMs. Activation campaigns cost money, so the bank needed to know which segments would pay back.
+The bank had **5.2M credit cardholders**, and **2.6M debit cardholders who only used their cards at ATMs**, never to pay. An unused card earns the bank nothing.
+
+Activation campaigns cost money, though. Offers, rewards and communication all add up, so targeting everyone wastes budget on people who won't respond, or who don't earn enough to pay back the offer.
 
 ## What I did
 
-1. **Segmented the credit portfolio** by activity state and card tier into 7 segments.
-2. **Proposed a focused activation set** of 5 of those segments.
-3. **Rebuilt the ROI model** on revolve and interchange revenue, and turned it into a Go/No-Go framework the client can use segment by segment.
-4. **Built propensity tiers** for the 2.6M ATM-only debit cardholders: a High tier of ~280K and a Medium tier of ~2.25M.
-5. **Modelled merchant-level offer economics**, so offers are judged on what they return.
+1. **Segmented the credit portfolio.** I grouped cardholders by activity state (how they use the card today) and card tier into **7 segments**.
+2. **Chose where to focus.** I proposed an activation set of **5 of those segments**, the ones worth a campaign.
+3. **Rebuilt the ROI model.** I modelled what each segment earns the bank through revolve (interest on balances) and interchange (fees on each payment), and turned it into a **Go/No-Go framework** the client can apply segment by segment.
+4. **Ranked the debit cardholders.** For the 2.6M ATM-only debit cardholders, I built propensity tiers: a **High tier of ~280K** and a **Medium tier of ~2.25M** people, by how likely they are to start paying with their card.
+5. **Checked the offers.** I modelled merchant-level offer economics, so each offer is judged on what it returns, not just how attractive it looks.
 
-All of it ran on SQL and PySpark over Hadoop/Impala.
+Along the way I analysed customer lifecycles, transactions and past campaign performance. Everything ran on **SQL and PySpark over Hadoop/Impala**.
 
 <Callout title="Impact">
-- **~₹500 Cr incremental present value** from the Go/No-Go framework
-- **+12.59% projected activation uplift** for debit, versus a −0.72% forecast
-- **140K projected new activations**
+- **~₹500 Cr incremental present value** from the Go/No-Go framework on the credit portfolio
+- **+12.59% projected activation uplift** for debit cardholders, against a baseline forecast of −0.72%
+- **~140K projected new activations**
+
+*How to read this:* these are projections from the models I built, not results after a campaign. The baseline forecast expected debit activation to fall slightly. The plan projects a rise instead.
 </Callout>
 
 ## Tools
@@ -52,4 +76,4 @@ All of it ran on SQL and PySpark over Hadoop/Impala.
 
 ## What I'd do next
 
-Run the activation set as a controlled test, so the projected uplift becomes a measured one.
+Run the activation set as a controlled test, with some cardholders held back as a comparison group, so the projected uplift becomes a measured one.

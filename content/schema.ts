@@ -48,6 +48,8 @@ export const resumeSchema = z.object({
   file: z.string().startsWith("/resume/").endsWith(".pdf"),
   /** Stable short link that redirects to the PDF. */
   shortPath: z.string().startsWith("/resume/"),
+  /** Image of page 1, used for the on-page preview (works in every browser, unlike embedded PDFs). */
+  preview: z.string().startsWith("/resume/preview/"),
   bestFor: z.string(),
 });
 
@@ -225,6 +227,14 @@ export const caseFrontmatterSchema = z.object({
   category: caseCategorySchema,
   /** One-line outcome for cards and the case-study header. */
   outcome: z.string(),
+  /** Plain-English summary shown at the top of the case study (2–3 sentences). */
+  summary: z.string(),
+  /** What the company does, in a few words (shown in "At a glance"). */
+  companyAbout: z.string(),
+  /** Team size or setup, only if known. */
+  team: z.string().optional(),
+  /** Jargon explained at the end of the page. */
+  glossary: z.array(z.object({ term: z.string(), meaning: z.string() })).optional(),
   tags: z.array(z.string()).min(3),
   metrics: z
     .array(z.object({ value: z.string(), label: z.string(), source: z.string().optional() }))

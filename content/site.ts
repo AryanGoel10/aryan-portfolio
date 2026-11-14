@@ -49,6 +49,7 @@ export const site: Site = {
       shortLabel: "GTM version",
       file: "/resume/Aryan_Goel_Resume_GTM.pdf",
       shortPath: "/resume/gtm",
+      preview: "/resume/preview/gtm.png",
       // Draft — edit if you like.
       bestFor: "Best for startup growth, GTM and founder's office roles.",
     },
@@ -58,6 +59,7 @@ export const site: Site = {
       shortLabel: "Analyst version",
       file: "/resume/Aryan_Goel_Resume_Analyst.pdf",
       shortPath: "/resume/analyst",
+      preview: "/resume/preview/analyst.png",
       // Draft — edit if you like.
       bestFor: "Best for consulting, fintech and analytics roles.",
     },

@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { buttonVariants } from "@/components/ui/button";
 import { AvailabilityBadge } from "@/components/ui/primitives";
 import { ResumeMenu } from "@/components/layout/resume-menu";
+import { CompanyLogo } from "@/components/ui/company-logo";
 
 /** Who I am, where I work right now (current roles), and the two main actions. */
 export function Hero() {
@@ -45,8 +46,11 @@ export function Hero() {
                 prefetch
                 className="card-hover group flex h-full flex-col rounded-card border border-line bg-surface p-4 shadow-card sm:p-5"
               >
-                <span className="flex items-baseline justify-between gap-3">
-                  <span className="text-[17px] font-semibold text-fg">{c.company}</span>
+                <span className="flex items-center justify-between gap-3">
+                  <span className="flex items-center gap-2.5">
+                    <CompanyLogo company={c.company} size={32} />
+                    <span className="text-[17px] font-semibold text-fg">{c.company}</span>
+                  </span>
                   <span className="font-mono text-[12px] whitespace-nowrap text-subtle">since {c.since}</span>
                 </span>
                 <span className="mt-0.5 text-meta text-subtle">{c.about}</span>

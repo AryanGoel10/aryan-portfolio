@@ -1,11 +1,13 @@
 ---
 title: Cutting quarterly reporting from 120 minutes to 5
 company: Mastercard Advisors
+companyAbout: Mastercard's consulting and analytics arm
 role: Associate Consultant Intern, Performance Analytics
 dates: May 2026 – Jul 2026
 year: "2026"
 category: Automation
 outcome: "Automated quarterly business reviews for India's #1 card issuer, 120 → 5 minutes per file, adopted as the team standard."
+summary: "Every quarter, the team I worked in builds review files for India's #1 card issuer. Each file took about two hours of manual spreadsheet work, across 10 file types. I built a pipeline in Python and VBScript that produces each file in 5 minutes with no errors, and the team adopted it as its standard way of working."
 tags: [Python, VBScript, Automation]
 metrics:
   - value: "95%"
@@ -15,39 +17,55 @@ metrics:
     label: analyst-hours saved per quarter
   - value: "10"
     label: file types covered
+glossary:
+  - term: QBR (quarterly business review)
+    meaning: A recurring report that shows a client how its business performed over the quarter and where to act next.
+  - term: Pivot table
+    meaning: A spreadsheet tool for summarising large tables. Building many of them by hand every quarter is slow and easy to get wrong.
+  - term: Parameter-driven
+    meaning: You set a few inputs (such as which quarter and which file) and the pipeline produces the output. Nothing is edited by hand.
+  - term: Deterministic and auditable
+    meaning: The same inputs always produce exactly the same file, and every number can be traced back to where it came from.
+  - term: SME
+    meaning: Small and medium-sized enterprises, one of the customer segments the reports cover.
 featured: true
 order: 4
-description: A parameter-driven Python and VBScript pipeline that cut quarterly business review production from 120 to 5 minutes per file at Mastercard Advisors.
+description: "A parameter-driven Python and VBScript pipeline that cut quarterly business review production from 120 to 5 minutes per file at Mastercard Advisors."
 ---
 
 ## Context
 
-At Mastercard Advisors I was an Associate Consultant Intern in Performance Analytics, working for India's #1 card issuer. Every quarter the team produces quarterly business reviews (QBRs) for the client. The client stays anonymous here, and there are no screenshots, by design.
+From May to July 2026 I was an Associate Consultant Intern in Mastercard Advisors' Performance Analytics practice in Mumbai, working for India's #1 card issuer. Every quarter, the team produces quarterly business reviews (QBRs) for this client: files that show how its card business performed and where to act next.
+
+*The client stays anonymous, and there are no screenshots or client data on this page, by design.*
 
 ## The problem
 
-QBR production was manual: 20+ hours of pivot work every quarter, about 120 minutes per file across 10 file types. Manual work also means room for error in numbers a client relies on.
+QBR production was manual. Each file took about **120 minutes** of pivot-table work, there were **10 file types**, and the total came to **20+ hours of analyst time every quarter**.
+
+Manual work is also where mistakes creep in, in numbers a client relies on. And because it was manual, taking the same reports to more clients would have meant more hours, not fewer.
 
 ## What I did
 
-1. **Built a parameter-driven pipeline** in Python and VBScript. Set the parameters, run it, get the finished file.
-2. **Made the metrics modular.** SME and market metrics are separate building blocks, so adding a metric doesn't mean rewriting the pipeline.
-3. **Made the output deterministic and auditable.** The same inputs always produce the same file, and every number can be traced.
-4. **Designed it to scale** to the team's other bank clients, not just this one.
+1. **Built a parameter-driven pipeline** in Python and VBScript. You choose the inputs, run it, and get the finished file, with no copy-pasting or hand-built pivots.
+2. **Made the metrics modular.** SME and market metrics are separate building blocks, so adding or changing a metric doesn't mean rewriting the pipeline.
+3. **Made the output deterministic and auditable.** The same inputs always produce the same file, and every number can be traced back to its source.
+4. **Designed it to scale** beyond this client, as a reporting framework the team can reuse for other banking clients.
+5. **Handed it over to the team**, who adopted it as their standard way of producing QBRs.
 
 <Callout title="Impact">
-- **120 → 5 minutes per file, 95% faster**, across 10 file types
-- **20–25 analyst-hours saved per quarter**
-- **Zero errors**, with output that can be audited
+- **120 → 5 minutes per file, 95% faster**, across all 10 file types
+- **20–25 analyst-hours saved every quarter**
+- **Zero errors**, with output that can be audited line by line
 - **Adopted as the team's standard workflow**
-</Callout>
 
 I left the internship with a full-time offer, joining in May 2027.
+</Callout>
 
 ## Tools
 
-<Tools items={["Python", "VBScript", "Microsoft Excel"]} />
+<Tools items={["Python", "SQL", "VBScript", "Microsoft Excel"]} />
 
 ## What I'd do next
 
-Roll the pipeline out to other bank clients, which is what it was designed for, and add automatic checks that flag unusual quarter-on-quarter movements before a human reviews the file.
+Roll the pipeline out to other bank clients, which is what it was designed for, and add automatic checks that flag unusual quarter-on-quarter movements before a person reviews the file.
